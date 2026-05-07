@@ -1,0 +1,9 @@
+.vscode/*
+bag*
+records*
+__pycache__
+build
+install
+log
+notes
+*.log
