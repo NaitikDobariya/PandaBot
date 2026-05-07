@@ -1,5 +1,5 @@
 # 1. Use the Humble Base image (Lighter than Desktop for Pi's RAM)
-FROM osrf/ros:humble-ros-base
+FROM ros:humble-ros-base
 
 # Avoid user interaction during apt installations
 ENV DEBIAN_FRONTEND=noninteractive
@@ -41,6 +41,8 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 RUN groupadd --gid $USER_GID $USERNAME \
+    && groupadd -f i2c \
+    && groupadd -f gpio \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
     && apt-get update \
     && apt-get install -y sudo \
