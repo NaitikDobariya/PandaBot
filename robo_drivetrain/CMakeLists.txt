@@ -5,9 +5,9 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-install(
-  DIRECTORY src
-  DESTINATION share/${PROJECT_NAME}
+install(PROGRAMS
+  src/drivetrain_node.py
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 # find dependencies
