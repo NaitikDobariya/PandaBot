@@ -65,6 +65,6 @@
         }
     },
     
-    "initializeCommand": "xhost +local:root",
+    "initializeCommand": "xhost +local:root || true",
     "remoteUser": "ros"
 }
