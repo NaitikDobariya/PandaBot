@@ -7,6 +7,7 @@ endif()
 
 install(PROGRAMS
   src/drivetrain_node.py
+  src/rc_control_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
