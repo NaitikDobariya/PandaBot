@@ -35,6 +35,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-slam-toolbox \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3-serial \
+    minicom \
+    && rm -rf /var/lib/apt/lists/*
+
 # 5. User Management & PI HARDWARE ACCESS
 ARG USERNAME=ros
 ARG USER_UID=1000
