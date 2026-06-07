@@ -4,24 +4,24 @@ PandaBot is a 3D-printable, ROS 2-based differential drive mobile robot develope
 
 The software stack runs natively on ROS 2 Humble and includes a fully configured Nav2 deployment, automated wheel PID tuning, and an exact-dimension Gazebo simulation environment for testing code before physical deployment.
 
-<div align="center">
-  
-https://github.com/NaitikDobariya/Images/raw/main/pandabot.mp4
-
-  <p><i>PandaBot</i></p>
-</div>
-
-<table width="100%">
+<table style="width: 100%; border-collapse: collapse; border: none;">
   <tr>
-    <td align="center" width="50%">
-      <img src="https://github.com/user-attachments/assets/c0ee372c-1c3c-460c-b902-d7ceb7ae9234" alt="PandaBot Mesh Model" width="100%">
-      <br><br>
-      <b>PandaBot Mesh Model</b>
+    <td colspan="2" style="text-align: center; padding-bottom: 15px; border: none;">
+      <a href="https://youtu.be/k2KcAErVpFw" target="_blank">
+        <img src="https://img.youtube.com/vi/k2KcAErVpFw/maxresdefault.jpg" alt="PandaBot Demonstration Video" style="width: 100%; max-width: 750px; height: auto; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);">
+      </a>
+      <p style="margin-top: 6px; font-size: 0.85em; color: #666;"><i> Click to watch the full 360 degree view</i></p>
     </td>
-    <td align="center" width="50%">
-      <img src="https://github.com/user-attachments/assets/f9faa77e-8a82-4ac8-b19b-063143543254" alt="PandaBot Hardware" width="100%">
-      <br><br>
-      <b>PandaBot Hardware</b>
+  </tr>
+  
+  <tr>
+    <td style="text-align: right; padding-right: 10px; border: none;">
+      <img src="https://github.com/user-attachments/assets/c0ee372c-1c3c-460c-b902-d7ceb7ae9234" alt="PandaBot Mesh Model" height="350" style="height: 350px; width: auto; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <p style="margin-top: 8px; font-weight: bold; text-align: center;">PandaBot Mesh Model</p>
+    </td>
+    <td style="text-align: left; padding-left: 10px; border: none;">
+      <img src="https://github.com/user-attachments/assets/f9faa77e-8a82-4ac8-b19b-063143543254" alt="PandaBot Hardware" height="350" style="height: 350px; width: auto; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+      <p style="margin-top: 8px; font-weight: bold; text-align: center;">PandaBot Hardware</p>
     </td>
   </tr>
 </table>
