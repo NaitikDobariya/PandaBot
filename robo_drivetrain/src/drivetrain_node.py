@@ -14,7 +14,7 @@ class DrivetrainBridge(Node):
         super().__init__('drivetrain_bridge')
         
         # --- 1. Robot Parameters ---
-        self.declare_parameter('wheel_radius', 0.110)
+        self.declare_parameter('wheel_radius', 0.055)
         self.declare_parameter('wheel_base', 0.30)
         self.declare_parameter('ticks_per_rev', 495.0)
         
@@ -51,13 +51,12 @@ class DrivetrainBridge(Node):
         v_r = v + (w * self.L / 2.0)
 
         # Convert m/s to Ticks per Loop for the Arduino PID
-        # (v / circumference) * ticks_per_rev / frequency
         circ = 2 * math.pi * self.R
         target_l = (v_l / circ) * self.TPR / self.loop_rate
         target_r = (v_r / circ) * self.TPR / self.loop_rate
 
-        # Send to Arduino
-        self.ser.write(f"{target_l:.2f},{target_r:.2f}\n".encode())
+        # FIX: Added 'T,' prefix so Arduino parses it correctly
+        self.ser.write(f"T,{target_l:.2f},{target_r:.2f}\n".encode())
 
     def forward_kinematics_loop(self):
         """ Translates Encoder Ticks -> Robot Pose (Odometry) """
@@ -65,9 +64,17 @@ class DrivetrainBridge(Node):
             return
 
         try:
-            line = self.ser.readline().decode().strip()
-            curr_l, curr_r = map(int, line.split(','))
-        except:
+            line = self.ser.readline().decode('utf-8', errors='ignore').strip()
+            
+            # FIX: Safely parse the "O,Left,Right" format
+            parts = line.split(',')
+            if len(parts) == 3 and parts[0] == 'O':
+                curr_l = int(parts[1])
+                curr_r = int(parts[2])
+            else:
+                return # Ignore garbage data or empty lines
+                
+        except Exception as e:
             return
 
         now = self.get_clock().now()

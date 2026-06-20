@@ -13,6 +13,7 @@ install(
 install(
   PROGRAMS
     src/keyboard_teleop.py
+    src/joystick_teleop.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
