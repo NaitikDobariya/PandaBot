@@ -56,9 +56,11 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
     && apt-get update \
     && apt-get install -y sudo \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && echo "$USERNAME ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
-    && usermod -aG dialout,video $USERNAME
+    && groupadd --force input \
+    && groupadd --force plugdev \
+    && usermod -aG dialout,video,input,plugdev $USERNAME
 
 # Auto-source ROS 2 in the container terminal
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/$USERNAME/.bashrc

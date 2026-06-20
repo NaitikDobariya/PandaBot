@@ -13,6 +13,7 @@
         "--network=host",
         "--ipc=host",
         "--gpus=all",
+        "--privileged",
         "--volume=/dev:/dev",
         "--cap-add=SYS_NICE",
         "--ulimit=rtprio=99",

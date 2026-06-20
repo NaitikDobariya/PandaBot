@@ -48,13 +48,15 @@ ARG USER_GID=$USER_UID
 RUN groupadd --gid $USER_GID $USERNAME \
     && groupadd -f i2c \
     && groupadd -f gpio \
+    && groupadd -f input \
+    && groupadd -f plugdev \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
     && apt-get update \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
-    # CRITICAL: Add user to dialout (Serial), video (Camera), i2c, and gpio
-    && usermod -aG dialout,video,i2c,gpio $USERNAME
+    # CRITICAL: Add user to serial, camera, pi-hardware, usb, and controllers
+    && usermod -aG dialout,video,i2c,gpio,input,plugdev $USERNAME
 
 # Auto-source ROS 2 Humble
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/$USERNAME/.bashrc
