@@ -1,0 +1,6 @@
+[submodule "src/sllidar_ros2"]
+	path = src/sllidar_ros2
+	url = https://github.com/Slamtec/sllidar_ros2
+[submodule "src/VibeChecker"]
+	path = src/VibeChecker
+	url = https://github.com/NaitikDobariya/VibeChecker
