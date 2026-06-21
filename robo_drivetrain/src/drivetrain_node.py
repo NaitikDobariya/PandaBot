@@ -114,11 +114,11 @@ class DrivetrainBridge(Node):
         qz = math.sin(self.th / 2.0)
         qw = math.cos(self.th / 2.0)
 
-        # 1. Publish TF (odom -> base_link)
+        # 1. Publish TF (odom -> base_footprint)
         t = TransformStamped()
         t.header.stamp = now.to_msg()
         t.header.frame_id = 'odom'
-        t.child_frame_id = 'base_link'
+        t.child_frame_id = 'base_footprint'
         t.transform.translation.x = self.x
         t.transform.translation.y = self.y
         t.transform.rotation.z = qz
@@ -129,7 +129,7 @@ class DrivetrainBridge(Node):
         odom = Odometry()
         odom.header.stamp = now.to_msg()
         odom.header.frame_id = 'odom'
-        odom.child_frame_id = 'base_link'
+        odom.child_frame_id = 'base_footprint'
         odom.pose.pose.position.x = self.x
         odom.pose.pose.position.y = self.y
         odom.pose.pose.orientation.z = qz

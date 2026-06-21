@@ -13,7 +13,7 @@ def generate_launch_description():
     description_share = FindPackageShare('robo_description')
     
     # Assuming you saved your new robot xacro inside the description package's urdf folder
-    xacro_file = PathJoinSubstitution([description_share, 'urdf', 'pandabot.xacro'])
+    xacro_file = PathJoinSubstitution([description_share, 'urdf', 'robot.urdf.xacro'])
 
     return LaunchDescription([
 
@@ -47,7 +47,7 @@ def generate_launch_description():
             parameters=[{
                 'serial_port': '/dev/ttyUSB0',  
                 'serial_baudrate': 115200,      # <-- A1M8 specific baudrate
-                'frame_id': 'laser_link',
+                'frame_id': 'lidar_link',
                 'angle_compensate': True,
                 'scan_mode': 'Standard'
             }],
